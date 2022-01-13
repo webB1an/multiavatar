@@ -5,7 +5,7 @@
       <i class="el-icon-loading"></i>
     </div>
     <div class="input">
-      <el-input class="input-text" v-model="input" />
+      <el-input class="input-text" v-model="input" @focus="focusClear" @blur="blurGen" />
     </div>
     <div class="tools">
       <div :class="`icon ${rotate ? 'rotate' : ''}`" @click="refresh">
@@ -47,6 +47,12 @@ export default {
     }
   },
   methods: {
+    focusClear () {
+      this.input = ''
+    },
+    blurGen () {
+      this.refresh()
+    },
     refresh () {
       this.newIdenticon()
     },
